@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>Blocos de Notas</title>
-	<link rel="stylesheet" th:href="@{/css/estilo2.css}" />
+	<link rel="stylesheet" th:href="@{/css/estilo.css}" />
 </head>
 
 <body>
@@ -17,30 +17,19 @@
 		</section>
 
 		<section>
-			<form th:action="${notepad.novo} ? @{/table} : @{/table/{id}(id=${notepad.id})}" th:object="${notepad}" th:method="${notepad.novo} ? post : put"
-				th:object="${notepad}" th:method=" post">
-				
-				<div th:if="${!notepad.novo}">
-					<label>Código: </label> 
-					
-					<input th:field="*{id}" readonly="readonly" />
-				</div>
-				
-				<div>
-					<label>Nome: </label> 
-					
-					<input th:field="*{nome}" />
-				</div>
+			<form th:action="@{/table}" th:method="post" > 
 
-				<div>
-					<label>Sobrenome: </label> 
-					
-					<input th:field="*{sobrenome}"/>
-				</div>
+				<label for="nome">Nome:</label>
+				<input type="nome" id="nome"  name="nome" placeholder="Nome" required />
 
-				<div>
-					<button>Salvar</button>
-				</div>
+				<label for="sobrenome">Sobrenome:</label>
+				<input type="sobrenome" id="sobrenome"  name="sobrenome" placeholder="Sobrenome" required />
+
+				<label for="texto">Telefone:</label>
+				<textarea  id="texto" name="texto" placeholder="Sobre oque está pensando hoje 🤔 ? " required></textarea>
+
+
+				<button type="submit">Salvar</button>
 				
 			</form>
 		</section>                                                                   
@@ -60,17 +49,17 @@
 				</thead>
 
 				<tbody>
-					<tr th:each="notepad: ${notePads}">
+					<tr th:each="notePad: ${notePads}">
 						
-						<td th:text="${notepad.nome}"></td>
-						<td th:text="${notepad.sobrenome}"></td>
-						<td th:text="${notepad.texto}"></td>
+						<td th:text="${notePad.nome}"></td>
+						<td th:text="${notePad.sobrenome}"></td>
+						<td th:text="${notePad.texto}"></td>
 						
 						<td>
 							
 							<a th:href="@{/}">Editar</a>
 							
-							<form th:action="@{/table/{id}(id=${notepad.id})}" th:method="delete">
+							<form th:action="@{/table/{id}(id=${notePad.id})}" th:method="delete">
                                 <button type="submit">Remover</button>
                             </form>
 						</td>
