@@ -1,0 +1,30 @@
+.inicio a {
+
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+.inicio button {
+
+    background-color: transparent;
+    border: 0;
+    padding: 7px;
+
+}
+.inicio {
+
+    text-align: center;
+    margin-top: 60px;
+    
+   
+}
+.inicio button:hover {
+    background-color: rgb(208, 214, 219);
+}
+li {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+	color: black;
+	padding: 20px;
+}
